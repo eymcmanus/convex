@@ -29,7 +29,7 @@ export default function App() {
       </p>
 
       <div className="dropdown">
-      <button onClick={() => setOpen(!open)}>Dropdown</button>
+      <button onClick={() => setOpen(!open)}>num of people</button>
       {open ? (
         <ul className="menu">
           <li className="menu-item">
@@ -46,21 +46,29 @@ export default function App() {
           </li>
         </ul>
       ) : null}
-      {open ? <div>Is Open</div> : <div>Is Closed</div>}
     </div>
+    <h2>remaining reservations</h2>
 
       <span>restaurant_name</span>
+      <span className="white-text">restaurant_name</span>
       <span>date</span>
+      <span className="white-text">restaurant_name</span>
       <span>time</span>
+      <span className="white-text">restaurant_name</span>
       <span>max_people</span>
+      <span className="white-text">restaurant_name</span>
 
       <ul>
         {reservations.map(reservation => (
           <li key={reservation._id.toString()}>
-            <span>{reservation.restaurant_name}:</span>
-            <span>{reservation.date}:</span>
-            <span>{reservation.time}:</span>
-            <span>{reservation.max_people}:</span>
+            <span>{reservation.restaurant_name}</span>
+            <span className="white-text">restaurant_name</span>
+            <span>{reservation.date}</span>
+            <span className="white-text">restaurant_name</span>
+            <span>{reservation.time}</span>
+            <span className="white-text">restaurant_name</span>
+            <span>{reservation.max_people}</span>
+            <span className="white-text">restaurant_name</span>
             <button onClick={() => handleMakeReservation(reservation._id, name, reservation.restaurant_name, reservation.date, reservation.time)}>Reserve</button>
           </li>
         ))}
