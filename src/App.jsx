@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "../convex/_generated/react";
 export default function App() {
  
   const [newMessageText, setNewMessageText] = useState("");
-  const [num_people, set_num_people]= useState("");
+  const [num_people, set_num_people]= useState(0);
   const sendMessage = useMutation("sendMessage");
   const makeReservation = useMutation("makeReservation");
 
@@ -19,7 +19,7 @@ export default function App() {
   async function handleMakeReservation(id, name, restaurant_name, date, time) {
     await makeReservation({ id: id, name: name, restaurant_name: restaurant_name, date: date, time: time});
   }
-  const reservations = useQuery("showReservation", num_people||0) || [];
+  const reservations = useQuery("showReservation", {num_people: num_people}) || [];
   const [open, setOpen] = useState(false);
   return (
     <main>
@@ -33,16 +33,28 @@ export default function App() {
       {open ? (
         <ul className="menu">
           <li className="menu-item">
-            <button>1</button>
+            <button onClick={() => set_num_people(1)}>1</button>
           </li>
           <li className="menu-item">
-            <button>2</button>
+            <button onClick={() => set_num_people(2)}>2</button>
           </li>
           <li className="menu-item">
-            <button>3</button>
+            <button onClick={() => set_num_people(3)}>3</button>
           </li>
           <li className="menu-item">
-            <button>4</button>
+            <button onClick={() => set_num_people(4)}>4</button>
+          </li>
+          <li className="menu-item">
+            <button onClick={() => set_num_people(5)}>5</button>
+          </li>
+          <li className="menu-item">
+            <button onClick={() => set_num_people(6)}>6</button>
+          </li>
+          <li className="menu-item">
+            <button onClick={() => set_num_people(7)}>7</button>
+          </li>
+          <li className="menu-item">
+            <button onClick={() => set_num_people(8)}>8</button>
           </li>
         </ul>
       ) : null}
