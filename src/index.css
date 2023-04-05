@@ -76,6 +76,11 @@ li span:nth-child(3) {
   white-space: nowrap;
 }
 
+.white-text{
+  color:#ffffff
+}
+
+
 form {
   display: flex;
   justify-content: center;
