@@ -5,6 +5,7 @@ export default function App() {
   const reservations = useQuery("showReservation") || [];
   const [newMessageText, setNewMessageText] = useState("");
   const sendMessage = useMutation("sendMessage");
+  const makeReservation = useMutation("makeReservation");
 
   const [name] = useState(() => "User " + Math.floor(Math.random() * 10000));
   async function handleSendMessage(event) {
@@ -12,12 +13,24 @@ export default function App() {
     setNewMessageText("");
     await sendMessage({ body: newMessageText, author: name });
   }
+
+  async function handleMakeReservation(id) {
+    console.log(id);
+    await makeReservation({ id: id});
+  }
+
   return (
     <main>
-      <h1>Convex Chat</h1>
+      <h1>Restaurant reservation</h1>
       <p className="badge">
         <span>{name}</span>
       </p>
+
+      <span>restaurant_name</span>
+      <span>date</span>
+      <span>time</span>
+      <span>max_people</span>
+
       <ul>
         {reservations.map(reservation => (
           <li key={reservation._id.toString()}>
@@ -25,6 +38,7 @@ export default function App() {
             <span>{reservation.date}:</span>
             <span>{reservation.time}:</span>
             <span>{reservation.max_people}:</span>
+            <button onClick={() => handleMakeReservation(reservation._id)}>Reserve</button>
           </li>
         ))}
       </ul>
