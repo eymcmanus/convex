@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useMutation, useQuery } from "../convex/_generated/react";
 
 export default function App() {
-  const messages = useQuery("listMessages") || [];
-
+  const reservations = useQuery("showReservation") || [];
   const [newMessageText, setNewMessageText] = useState("");
   const sendMessage = useMutation("sendMessage");
 
@@ -20,11 +19,12 @@ export default function App() {
         <span>{name}</span>
       </p>
       <ul>
-        {messages.map(message => (
-          <li key={message._id.toString()}>
-            <span>{message.author}:</span>
-            <span>{message.body}</span>
-            <span>{new Date(message._creationTime).toLocaleTimeString()}</span>
+        {reservations.map(reservation => (
+          <li key={reservation._id.toString()}>
+            <span>{reservation.restaurant_name}:</span>
+            <span>{reservation.date}:</span>
+            <span>{reservation.time}:</span>
+            <span>{reservation.max_people}:</span>
           </li>
         ))}
       </ul>
