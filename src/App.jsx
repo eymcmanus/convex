@@ -14,9 +14,9 @@ export default function App() {
     await sendMessage({ body: newMessageText, author: name });
   }
 
-  async function handleMakeReservation(id) {
+  async function handleMakeReservation(id, name, restaurant_name, date, time) {
     console.log(id);
-    await makeReservation({ id: id});
+    await makeReservation({ id: id, name: name, restaurant_name: restaurant_name, date: date, time: time});
   }
 
   return (
@@ -38,7 +38,7 @@ export default function App() {
             <span>{reservation.date}:</span>
             <span>{reservation.time}:</span>
             <span>{reservation.max_people}:</span>
-            <button onClick={() => handleMakeReservation(reservation._id)}>Reserve</button>
+            <button onClick={() => handleMakeReservation(reservation._id, name, reservation.restaurant_name, reservation.date, reservation.time)}>Reserve</button>
           </li>
         ))}
       </ul>
